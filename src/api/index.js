@@ -1,11 +1,13 @@
 const express = require('express');
+const auth = require('./auth/auth.routes');
+const users = require('./users/users.routes');
 
 const router = express.Router();
 
-const auth = require('./auth/auth.routes');
+router.use(express.json());
 
 router.use('/auth', auth);
-router.use(express.json());
+router.use('/users', users);
 
 router.get('/', (req, res) => {
   res.json({
